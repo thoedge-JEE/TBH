@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TBH - Thoyajaksh's Board's Hub</title>
+
+<style>
+/* =========================================================
+   TBH - THOYAJAKSH'S BOARD'S HUB
+   SINGLE FILE VERSION
+   Put logo.png beside this index.html
+   ========================================================= */
+
+:root{
+    --bg:#070912;
+    --bg2:#0b1020;
+    --card:#11182a;
+    --card2:#151e33;
+    --text:#f5f7ff;
+    --muted:#9ba7c2;
+    --line:rgba(255,255,255,.10);
+    --cyan:#36e6ff;
+    --blue:#4d7cff;
+    --purple:#a66cff;
+    --pink:#ff5db1;
+    --green:#3df2a2;
+    --yellow:#ffd35a;
+    --danger:#ff687c;
+    --shadow:0 20px 60px rgba(0,0,0,.35);
+    --radius:22px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(54,230,255,.10),transparent 28%),
+        radial-gradient(circle at 90% 15%,rgba(166,108,255,.10),transparent 30%),
+        radial-gradient(circle at 50% 90%,rgba(255,93,177,.07),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+/* subtle background grid */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.16;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:45px 45px;
+    z-index:-1;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(18px);
+    background:rgba(7,9,18,.84);
+    border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+    max-width:1400px;
+    margin:auto;
+    min-height:88px;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    min-width:0;
+}
+
+.logo{
+    width:58px;
+    height:58px;
+    border-radius:16px;
+    object-fit:cover;
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:
+        0 0 25px rgba(54,230,255,.18),
+        0 8px 25px rgba(0,0,0,.35);
+    background:#101827;
+}
+
+.brand-title{
+    font-size:clamp(18px,2.2vw,27px);
+    font-weight:900;
+    letter-spacing:-.5px;
+    white-space:nowrap;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.session-badge{
+    padding:9px 14px;
+    border-radius:999px;
+    border:1px solid rgba(54,230,255,.25);
+    background:rgba(54,230,255,.07);
+    color:var(--cyan);
+    font-size:12px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero{
+    max-width:1400px;
+    margin:0 auto;
+    padding:65px 24px 35px;
+}
+
+.hero-box{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:32px;
+    padding:48px;
+    background:
+        linear-gradient(135deg,
+            rgba(54,230,255,.08),
+            rgba(166,108,255,.08) 45%,
+            rgba(255,93,177,.06));
+    box-shadow:var(--shadow);
+}
+
+.hero-box::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    right:-120px;
+    top:-180px;
+    background:rgba(54,230,255,.12);
+    filter:blur(70px);
+    border-radius:50%;
+}
+
+.hero-kicker{
+    color:var(--cyan);
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-size:12px;
+    margin-bottom:14px;
+}
+
+.hero h1{
+    font-size:clamp(34px,6vw,72px);
+    line-height:1;
+    letter-spacing:-3px;
+    max-width:850px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    margin-top:20px;
+    max-width:800px;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.7;
+}
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search-wrap{
+    max-width:1400px;
+    margin:10px auto 0;
+    padding:0 24px;
+}
+
+.search-box{
+    display:flex;
+    gap:10px;
+    padding:10px;
+    background:rgba(255,255,255,.045);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+}
+
+.search-box input{
+    flex:1;
+    min-width:0;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:white;
+    padding:13px 15px;
+    font-size:15px;
+}
+
+.search-box input::placeholder{
+    color:#69748d;
+}
+
+.search-btn{
+    border:0;
+    border-radius:13px;
+    padding:0 22px;
+    background:linear-gradient(135deg,var(--cyan),var(--blue));
+    color:#031018;
+    font-weight:900;
+    transition:.2s;
+}
+
+.search-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(54,230,255,.18);
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.main{
+    max-width:1400px;
+    margin:auto;
+    padding:35px 24px 80px;
+}
+
+.section-title{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:15px;
+    margin:35px 0 18px;
+}
+
+.section-title h2{
+    font-size:25px;
+}
+
+.section-title p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* =========================================================
+   CLASS SELECTOR
+   ========================================================= */
+
+.class-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:20px;
+}
+
+.class-card{
+    position:relative;
+    overflow:hidden;
+    min-height:190px;
+    text-align:left;
+    padding:30px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+    color:white;
+    transition:.25s ease;
+}
+
+.class-card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    right:-60px;
+    top:-70px;
+    border-radius:50%;
+    background:rgba(54,230,255,.08);
+    filter:blur(15px);
+}
+
+.class-card:hover,
+.class-card.active{
+    transform:translateY(-5px);
+    border-color:rgba(54,230,255,.45);
+    box-shadow:0 18px 45px rgba(0,0,0,.3);
+}
+
+.class-card.active{
+    background:
+        linear-gradient(145deg,
+            rgba(54,230,255,.13),
+            rgba(166,108,255,.09));
+}
+
+.class-number{
+    color:var(--cyan);
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.class-card h3{
+    margin-top:10px;
+    font-size:31px;
+}
+
+.class-card p{
+    color:var(--muted);
+    margin-top:7px;
+    line-height:1.5;
+}
+
+.click-hint{
+    position:absolute;
+    bottom:22px;
+    right:25px;
+    color:#75819a;
+    font-size:12px;
+    font-weight:800;
+}
+
+/* =========================================================
+   SUBJECTS
+   ========================================================= */
+
+.subjects-section{
+    display:none;
+    animation:fadeIn .3s ease;
+}
+
+.subjects-section.visible{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:15px;
+}
+
+.subject-card{
+    position:relative;
+    min-height:150px;
+    padding:23px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+    transition:.22s ease;
+    text-align:left;
+    color:white;
+    overflow:hidden;
+}
+
+.subject-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(166,108,255,.5);
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.subject-code{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:8px;
+    background:rgba(166,108,255,.10);
+    color:#c8b0ff;
+    font-size:11px;
+    font-weight:900;
+    margin-bottom:13px;
+}
+
+.subject-card h3{
+    font-size:19px;
+    line-height:1.25;
+    padding-right:20px;
+}
+
+.subject-card p{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* =========================================================
+   CHAPTERS
+   ========================================================= */
+
+.chapters-section{
+    display:none;
+    animation:fadeIn .3s ease;
+}
+
+.chapters-section.visible{
+    display:block;
+}
+
+.back-btn{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.045);
+    color:#dce4f7;
+    border-radius:12px;
+    padding:10px 15px;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.back-btn:hover{
+    border-color:rgba(54,230,255,.35);
+}
+
+.current-path{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:22px;
+}
+
+.chapter-list{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+}
+
+.chapter-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:20px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.035);
+    border-radius:17px;
+    color:white;
+    text-align:left;
+    transition:.2s;
+}
+
+.chapter-card:hover{
+    transform:translateX(4px);
+    border-color:rgba(54,230,255,.38);
+    background:rgba(54,230,255,.045);
+}
+
+.chapter-number{
+    color:var(--cyan);
+    font-size:11px;
+    font-weight:900;
+}
+
+.chapter-name{
+    margin-top:5px;
+    font-weight:800;
+}
+
+.chapter-arrow{
+    color:#74809a;
+    font-size:20px;
+}
+
+/* =========================================================
+   RESOURCE PAGE
+   ========================================================= */
+
+.resource-section{
+    display:none;
+    animation:fadeIn .3s ease;
+}
+
+.resource-section.visible{
+    display:block;
+}
+
+.resource-header{
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:
+        linear-gradient(135deg,
+            rgba(54,230,255,.07),
+            rgba(166,108,255,.07));
+    margin-bottom:20px;
+}
+
+.resource-header h2{
+    font-size:28px;
+}
+
+.resource-header p{
+    color:var(--muted);
+    margin-top:8px;
+}
+
+.resource-groups{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+}
+
+.resource-group{
+    border:1px solid var(--line);
+    border-radius:19px;
+    padding:20px;
+    background:rgba(255,255,255,.035);
+}
+
+.resource-group h3{
+    font-size:15px;
+    margin-bottom:13px;
+    color:#e8edff;
+}
+
+.resource-list{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.resource-link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    text-decoration:none;
+    color:#dfe7fb;
+    border:1px solid rgba(255,255,255,.075);
+    background:rgba(255,255,255,.025);
+    border-radius:12px;
+    padding:12px 14px;
+    transition:.2s;
+}
+
+.resource-link:hover{
+    border-color:rgba(54,230,255,.4);
+    background:rgba(54,230,255,.055);
+    transform:translateX(3px);
+}
+
+.resource-name{
+    font-size:13px;
+    font-weight:750;
+}
+
+.resource-type{
+    flex-shrink:0;
+    color:var(--cyan);
+    font-size:10px;
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   SEARCH RESULTS
+   ========================================================= */
+
+.search-results{
+    display:none;
+    animation:fadeIn .3s ease;
+}
+
+.search-results.visible{
+    display:block;
+}
+
+.search-info{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+}
+
+.result-card{
+    border:1px solid var(--line);
+    border-radius:17px;
+    padding:18px;
+    background:rgba(255,255,255,.04);
+}
+
+.result-card h3{
+    font-size:15px;
+}
+
+.result-card p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:6px;
+}
+
+.result-card a{
+    display:inline-block;
+    margin-top:12px;
+    color:var(--cyan);
+    text-decoration:none;
+    font-size:12px;
+    font-weight:900;
+}
+
+/* =========================================================
+   EMPTY / FOOTER
+   ========================================================= */
+
+.empty{
+    padding:40px;
+    border:1px dashed var(--line);
+    border-radius:18px;
+    color:var(--muted);
+    text-align:center;
+}
+
+.footer{
+    max-width:1400px;
+    margin:auto;
+    padding:30px 24px 50px;
+    color:#65708a;
+    font-size:12px;
+    text-align:center;
+    border-top:1px solid var(--line);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:900px){
+    .subject-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .resource-groups,
+    .result-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:650px){
+    .header-inner{
+        padding:11px 15px;
+    }
+
+    .logo{
+        width:46px;
+        height:46px;
+        border-radius:12px;
+    }
+
+    .brand-title{
+        font-size:15px;
+    }
+
+    .session-badge{
+        display:none;
+    }
+
+    .hero{
+        padding:30px 15px 20px;
+    }
+
+    .hero-box{
+        padding:30px 22px;
+        border-radius:24px;
+    }
+
+    .hero h1{
+        letter-spacing:-1.8px;
+    }
+
+    .search-wrap,
+    .main{
+        padding-left:15px;
+        padding-right:15px;
+    }
+
+    .class-grid,
+    .subject-grid,
+    .chapter-list{
+        grid-template-columns:1fr;
+    }
+
+    .search-btn{
+        padding:0 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
+
+<header class="header">
+    <div class="header-inner">
+
+        <div class="brand">
+
+            <!-- PUT YOUR logo.png IN THE SAME FOLDER AS index.html -->
+            <img
+                src="logo.png"
+                alt="TBH Logo"
+                class="logo"
+                onerror="this.style.visibility='hidden';"
+            >
+
+            <div class="brand-title">
+                TBH - Thoyajaksh's Board's Hub
+            </div>
+
+        </div>
+
+        <div class="header-right">
+            <div class="session-badge">
+                CBSE • 2026–27
+            </div>
+        </div>
+
+    </div>
+</header>
+
+
+<!-- =======================================================
+     HERO
+     ======================================================= -->
+
+<section class="hero">
+
+    <div class="hero-box">
+
+        <div class="hero-kicker">
+            CBSE BOARD RESOURCE HUB
+        </div>
+
+        <h1>
+            Study everything.
+            <span>In one place.</span>
+        </h1>
+
+        <p>
+            Class 10 and Class 12 CBSE resources organised by subject,
+            chapter and resource type — notes, NCERT resources, PYQs,
+            question papers, sample papers, PDFs, Drive files and more.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     SEARCH
+     ======================================================= -->
+
+<div class="search-wrap">
+
+    <form class="search-box" id="searchForm">
+
+        <input
+            id="searchInput"
+            type="search"
+            autocomplete="off"
+            placeholder="Search subjects, chapters, PYQs, notes, papers..."
+        >
+
+        <button class="search-btn" type="submit">
+            SEARCH
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =======================================================
+     MAIN
+     ======================================================= -->
+
+<main class="main">
+
+    <!-- CLASS SELECTION -->
+
+    <section id="classesSection">
+
+        <div class="section-title">
+            <div>
+                <h2>Choose your class</h2>
+                <p>Click a class to open its subjects.</p>
+            </div>
+        </div>
+
+        <div class="class-grid">
+
+            <button
+                class="class-card"
+                id="class10Button"
+                onclick="openClass('10')"
+            >
+                <div class="class-number">CBSE • SECONDARY</div>
+                <h3>Class 10</h3>
+                <p>
+                    Mathematics, Science, Social Science,
+                    English, Telugu AP, Information Technology
+                    and more.
+                </p>
+
+                <div class="click-hint">
+                    Click to open →
+                </div>
+            </button>
+
+
+            <button
+                class="class-card"
+                id="class12Button"
+                onclick="openClass('12')"
+            >
+                <div class="class-number">CBSE • SENIOR SECONDARY</div>
+                <h3>Class 12</h3>
+                <p>
+                    Physics, Chemistry, Mathematics, English,
+                    Computer Science, Physical Education and
+                    your additional subjects.
+                </p>
+
+                <div class="click-hint">
+                    Click to open →
+                </div>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SUBJECTS
+         =================================================== -->
+
+    <section
+        id="subjectsSection"
+        class="subjects-section"
+    >
+
+        <div class="section-title">
+
+            <div>
+                <h2 id="subjectsTitle">Subjects</h2>
+                <p id="subjectsSubtitle"></p>
+            </div>
+
+        </div>
+
+        <div
+            id="subjectGrid"
+            class="subject-grid"
+        ></div>
+
+    </section>
+
+
+    <!-- ===================================================
+         CHAPTERS
+         =================================================== -->
+
+    <section
+        id="chaptersSection"
+        class="chapters-section"
+    >
+
+        <button
+            class="back-btn"
+            onclick="backToSubjects()"
+        >
+            ← Back to Subjects
+        </button>
+
+        <div class="current-path" id="chapterPath"></div>
+
+        <div
+            id="chapterList"
+            class="chapter-list"
+        ></div>
+
+    </section>
+
+
+    <!-- ===================================================
+         RESOURCES
+         =================================================== -->
+
+    <section
+        id="resourceSection"
+        class="resource-section"
+    >
+
+        <button
+            class="back-btn"
+            onclick="backToChapters()"
+        >
+            ← Back to Chapters
+        </button>
+
+        <div
+            class="resource-header"
+            id="resourceHeader"
+        ></div>
+
+        <div
+            id="resourceGroups"
+            class="resource-groups"
+        ></div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SEARCH RESULTS
+         =================================================== -->
+
+    <section
+        id="searchResults"
+        class="search-results"
+    >
+
+        <div class="section-title">
+
+            <div>
+                <h2>Search Results</h2>
+                <p id="searchInfo"></p>
+            </div>
+
+        </div>
+
+        <div
+            id="resultGrid"
+            class="result-grid"
+        ></div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+    TBH - Thoyajaksh's Board's Hub • CBSE Resource Hub
+</footer>
+
+
+<script>
+
+/* =========================================================
+   IMPORTANT:
+   ADD YOUR REAL GOOGLE DRIVE / PDF / YOUTUBE LINKS BELOW.
+   ========================================================= */
+
+
+/* =========================================================
+   RESOURCE HELPER
+   ========================================================= */
+ function resource(name, url, type="PDF"){
+    return {
+        name:name,
+        url:url,
+        type:type
+    };
+}
+
+
+/* =========================================================
+   COMMON RESOURCES
+   These can be used for every chapter/subject.
+   Replace the example links with YOUR links.
+   ========================================================= */
+
+const COMMON_RESOURCES = [
+
+    resource(
+        "My Question Paper Collection",
+        "https://drive.google.com/",
+        "DRIVE"
+    ),
+
+    resource(
+        "My Sample Paper Collection",
+        "https://drive.google.com/",
+        "DRIVE"
+    ),
+
+    resource(
+        "My PYQ Collection",
+        "https://drive.google.com/",
+        "DRIVE"
+    ),
+
+    resource(
+        "My Extra PDFs",
+        "https://drive.google.com/",
+        "DRIVE"
+    )
+
+];
+
+
+/* =========================================================
+   RESOURCE GROUP
+   ========================================================= */
+
+function groups(...items){
+    return items;
+}
+
+
+/* =========================================================
+   BOARD DATA
+   ========================================================= */
+
+const BOARD_DATA = {
+
+    "10": {
+
+        name:"Class 10",
+
+        subjects:[
+
+            {
+                code:"041",
+                name:"Mathematics Standard",
+                description:"Standard Mathematics resources.",
+                chapters:[
+                    "Real Numbers",
+                    "Polynomials",
+                    "Pair of Linear Equations in Two Variables",
+                    "Quadratic Equations",
+                    "Arithmetic Progressions",
+                    "Triangles",
+                    "Coordinate Geometry",
+                    "Introduction to Trigonometry",
+                    "Some Applications of Trigonometry",
+                    "Circles",
+                    "Areas Related to Circles",
+                    "Surface Areas and Volumes",
+                    "Statistics",
+                    "Probability"
+                ]
+            },
+
+            {
+                code:"241",
+                name:"Mathematics Basic",
+                description:"Basic Mathematics resources.",
+                chapters:[
+                    "Real Numbers",
+                    "Polynomials",
+                    "Pair of Linear Equations in Two Variables",
+                    "Quadratic Equations",
+                    "Arithmetic Progressions",
+                    "Triangles",
+                    "Coordinate Geometry",
+                    "Introduction to Trigonometry",
+                    "Some Applications of Trigonometry",
+                    "Circles",
+                    "Areas Related to Circles",
+                    "Surface Areas and Volumes",
+                    "Statistics",
+                    "Probability"
+                ]
+            },
+
+            {
+                code:"086",
+                name:"Science",
+                description:"Physics, Chemistry and Biology resources.",
+                chapters:[
+                    "Chemical Reactions and Equations",
+                    "Acids, Bases and Salts",
+                    "Metals and Non-metals",
+                    "Carbon and Its Compounds",
+                    "Life Processes",
+                    "Control and Coordination",
+                    "How Do Organisms Reproduce?",
+                    "Heredity",
+                    "Light – Reflection and Refraction",
+                    "The Human Eye and the Colourful World",
+                    "Electricity",
+                    "Magnetic Effects of Electric Current",
+                    "Our Environment"
+                ]
+            },
+
+            {
+                code:"087",
+                name:"Social Science",
+                description:"History, Geography, Political Science and Economics.",
+                chapters:[
+                    "The Rise of Nationalism in Europe",
+                    "Nationalism in India",
+                    "The Making of a Global World",
+                    "The Age of Industrialisation",
+                    "Print Culture and the Modern World",
+                    "Resources and Development",
+                    "Forest and Wildlife Resources",
+                    "Water Resources",
+                    "Agriculture",
+                    "Minerals and Energy Resources",
+                    "Manufacturing Industries",
+                    "Lifelines of National Economy",
+                    "Power Sharing",
+                    "Federalism",
+                    "Gender, Religion and Caste",
+                    "Political Parties",
+                    "Outcomes of Democracy",
+                    "Development",
+                    "Sectors of the Indian Economy",
+                    "Money and Credit",
+                    "Globalisation and the Indian Economy",
+                    "Consumer Rights"
+                ]
+            },
+
+            {
+                code:"184",
+                name:"English Language and Literature",
+                description:"Literature, reading and writing resources.",
+                chapters:[
+                    "A Letter to God",
+                    "Nelson Mandela: Long Walk to Freedom",
+                    "Two Stories About Flying",
+                    "From the Diary of Anne Frank",
+                    "Glimpses of India",
+                    "Mijbil the Otter",
+                    "Madam Rides the Bus",
+                    "The Sermon at Benares",
+                    "The Proposal",
+                    "Dust of Snow",
+                    "Fire and Ice",
+                    "A Tiger in the Zoo",
+                    "How to Tell Wild Animals",
+                    "The Ball Poem",
+                    "Amanda!",
+                    "The Trees",
+                    "Fog",
+                    "The Tale of Custard the Dragon",
+                    "For Anne Gregory"
+                ]
+            },
+
+            {
+                code:"007",
+                name:"Telugu AP",
+                description:"Telugu AP board resources.",
+                chapters:[
+                    "Telugu Literature",
+                    "Poetry",
+                    "Prose",
+                    "Grammar",
+                    "Writing Skills",
+                    "Important Questions"
+                ]
+            },
+
+            {
+                code:"402",
+                name:"Information Technology",
+                description:"CBSE Information Technology resources.",
+                chapters:[
+                    "Digital Documentation",
+                    "Electronic Spreadsheet",
+                    "Database Management System",
+                    "Web Applications and Security"
+                ]
+            }
+
+        ]
+    },
+
+
+    /* =====================================================
+       CLASS 12
+       ===================================================== */
+
+    "12": {
+
+        name:"Class 12",
+
+        subjects:[
+
+            {
+                code:"042",
+                name:"Physics",
+                description:"Complete Class 12 Physics resources.",
+                chapters:[
+                    "Electric Charges and Fields",
+                    "Electrostatic Potential and Capacitance",
+                    "Current Electricity",
+                    "Moving Charges and Magnetism",
+                    "Magnetism and Matter",
+                    "Electromagnetic Induction",
+                    "Alternating Current",
+                    "Electromagnetic Waves",
+                    "Ray Optics and Optical Instruments",
+                    "Wave Optics",
+                    "Dual Nature of Radiation and Matter",
+                    "Atoms",
+                    "Nuclei",
+                    "Semiconductor Electronics"
+                ]
+            },
+
+            {
+                code:"043",
+                name:"Chemistry",
+                description:"Physical, Organic and Inorganic Chemistry.",
+                chapters:[
+                    "Solutions",
+                    "Electrochemistry",
+                    "Chemical Kinetics",
+                    "d- and f-Block Elements",
+                    "Coordination Compounds",
+                    "Haloalkanes and Haloarenes",
+                    "Alcohols, Phenols and Ethers",
+                    "Aldehydes, Ketones and Carboxylic Acids",
+                    "Amines",
+                    "Biomolecules"
+                ]
+            },
+
+            {
+                code:"041",
+                name:"Mathematics",
+                description:"Complete Class 12 Mathematics resources.",
+                chapters:[
+                    "Relations and Functions",
+                    "Inverse Trigonometric Functions",
+                    "Matrices",
+                    "Determinants",
+                    "Continuity and Differentiability",
+                    "Application of Derivatives",
+                    "Integrals",
+                    "Application of Integrals",
+                    "Differential Equations",
+                    "Vector Algebra",
+                    "Three Dimensional Geometry",
+                    "Linear Programming",
+                    "Probability"
+                ]
+            },
+
+            {
+                code:"301",
+                name:"English Core",
+                description:"Reading, writing and literature resources.",
+                chapters:[
+                    "The Last Lesson",
+                    "Lost Spring",
+                    "Deep Water",
+                    "The Rattrap",
+                    "Indigo",
+                    "Poets and Pancakes",
+                    "The Interview",
+                    "Going Places",
+                    "My Mother at Sixty-Six",
+                    "An Elementary School Classroom in a Slum",
+                    "Keeping Quiet",
+                    "A Thing of Beauty",
+                    "A Roadside Stand",
+                    "Aunt Jennifer's Tigers",
+                    "The Third Level",
+                    "The Tiger King",
+                    "Journey to the End of the Earth",
+                    "The Enemy",
+                    "On the Face of It",
+                    "Memories of Childhood"
+                ]
+            },
+
+            {
+                code:"083",
+                name:"Computer Science",
+                description:"Programming, Python, databases and computer science.",
+                chapters:[
+                    "Computational Thinking",
+                    "Python Programming",
+                    "Functions",
+                    "File Handling",
+                    "Data Structures",
+                    "Computer Networks",
+                    "Database Management",
+                    "SQL",
+                    "Boolean Logic",
+                    "Computer Security"
+                ]
+            },
+
+            {
+                code:"048",
+                name:"Physical Education",
+                description:"Theory, practical and board exam resources.",
+                chapters:[
+                    "Management of Sporting Events",
+                    "Children and Women in Sports",
+                    "Yoga and Lifestyle",
+                    "Physical Education and Sports for CWSN",
+                    "Sports and Nutrition",
+                    "Test and Measurement in Sports",
+                    "Physiology and Sports",
+                    "Kinesiology, Biomechanics and Sports",
+                    "Psychology and Sports",
+                    "Training in Sports"
+                ]
+            },
+
+            {
+                code:"821",
+                name:"Multimedia",
+                description:"Multimedia and related skill-subject resources.",
+                chapters:[
+                    "Introduction to Multimedia",
+                    "Graphics",
+                    "Image Editing",
+                    "Audio",
+                    "Video",
+                    "Animation",
+                    "Web and Multimedia",
+                    "Multimedia Project"
+                ]
+            },
+
+            {
+                code:"CUSTOM",
+                name:"Office Practices",
+                description:"Office Practices resources.",
+                chapters:[
+                    "Office Organisation",
+                    "Office Communication",
+                    "Records and Filing",
+                    "Office Equipment",
+                    "Correspondence",
+                    "Office Procedures",
+                    "Practical Work",
+                    "Important Questions"
+                ]
+            }
+
+        ]
+    }
+
+};
+
+
+/* =========================================================
+   APPLICATION STATE
+   ========================================================= */
+
+let currentClass = null;
+let currentSubject = null;
+let currentChapter = null;
+
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const classesSection = document.getElementById("classesSection");
+const subjectsSection = document.getElementById("subjectsSection");
+const chaptersSection = document.getElementById("chaptersSection");
+const resourceSection = document.getElementById("resourceSection");
+const searchResults = document.getElementById("searchResults");
+
+const subjectGrid = document.getElementById("subjectGrid");
+const chapterList = document.getElementById("chapterList");
+const resourceHeader = document.getElementById("resourceHeader");
+const resourceGroups = document.getElementById("resourceGroups");
+
+const subjectsTitle = document.getElementById("subjectsTitle");
+const subjectsSubtitle = document.getElementById("subjectsSubtitle");
+const chapterPath = document.getElementById("chapterPath");
+
+const searchInput = document.getElementById("searchInput");
+const searchInfo = document.getElementById("searchInfo");
+const resultGrid = document.getElementById("resultGrid");
+
+
+/* =========================================================
+   HIDE ALL CONTENT SECTIONS
+   ========================================================= */
+
+function hideAllSections(){
+
+    subjectsSection.classList.remove("visible");
+    chaptersSection.classList.remove("visible");
+    resourceSection.classList.remove("visible");
+    searchResults.classList.remove("visible");
+
+}
+
+
+/* =========================================================
+   OPEN CLASS
+   ========================================================= */
+
+function openClass(classId){
+
+    const classData = BOARD_DATA[classId];
+
+    if(!classData){
+        console.error("Class not found:",classId);
+        return;
+    }
+
+    currentClass = classId;
+    currentSubject = null;
+    currentChapter = null;
+
+    hideAllSections();
+
+    subjectGrid.innerHTML = "";
+
+    subjectsTitle.textContent =
+        classData.name + " Subjects";
+
+    subjectsSubtitle.textContent =
+        "Select a subject to open its chapters and resources.";
+
+    classData.subjects.forEach((subject,index)=>{
+
+        const card = document.createElement("button");
+
+        card.className = "subject-card";
+
+        card.onclick = function(){
+            openSubject(index);
+        };
+
+        card.innerHTML = `
+            <span class="subject-code">
+                CODE ${escapeHTML(subject.code)}
+            </span>
+
+            <h3>
+                ${escapeHTML(subject.name)}
+            </h3>
+
+            <p>
+                ${escapeHTML(subject.description)}
+            </p>
+        `;
+
+        subjectGrid.appendChild(card);
+
+    });
+
+    subjectsSection.classList.add("visible");
+
+    setTimeout(()=>{
+        subjectsSection.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    },80);
+
+}
+
+
+/* =========================================================
+   OPEN SUBJECT
+   ========================================================= */
+
+function openSubject(subjectIndex){
+
+    const classData = BOARD_DATA[currentClass];
+
+    if(!classData){
+        return;
+    }
+
+    const subject = classData.subjects[subjectIndex];
+
+    if(!subject){
+        return;
+    }
+
+    currentSubject = subjectIndex;
+    currentChapter = null;
+
+    hideAllSections();
+
+    chapterPath.textContent =
+        `${classData.name}  /  ${subject.name}  /  Chapters`;
+
+    chapterList.innerHTML = "";
+
+    subject.chapters.forEach((chapter,index)=>{
+
+        const card = document.createElement("button");
+
+        card.className = "chapter-card";
+
+        card.onclick = function(){
+            openChapter(index);
+        };
+
+        card.innerHTML = `
+            <div>
+                <div class="chapter-number">
+                    CHAPTER ${String(index+1).padStart(2,"0")}
+                </div>
+
+                <div class="chapter-name">
+                    ${escapeHTML(chapter)}
+                </div>
+            </div>
+
+            <div class="chapter-arrow">
+                →
+            </div>
+        `;
+
+        chapterList.appendChild(card);
+
+    });
+
+    chaptersSection.classList.add("visible");
+
+    setTimeout(()=>{
+        chaptersSection.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    },80);
+
+}
+
+
+/* =========================================================
+   OPEN CHAPTER
+   ========================================================= */
+
+function openChapter(chapterIndex){
+
+    const classData = BOARD_DATA[currentClass];
+
+    if(!classData){
+        return;
+    }
+
+    const subject = classData.subjects[currentSubject];
+
+    if(!subject){
+        return;
+    }
+
+    const chapterName = subject.chapters[chapterIndex];
+
+    currentChapter = chapterIndex;
+
+    hideAllSections();
+
+    resourceHeader.innerHTML = `
+        <h2>${escapeHTML(chapterName)}</h2>
+
+        <p>
+            ${escapeHTML(subject.name)}
+            • Code ${escapeHTML(subject.code)}
+            • ${escapeHTML(classData.name)}
+        </p>
+    `;
+
+
+    /*
+       ------------------------------------------------------
+       IMPORTANT:
+       EVERY CHAPTER GETS ITS OWN RESOURCE GROUPS HERE.
+
+       Replace the example links with your actual Drive/PDF
+       links for each chapter.
+       ------------------------------------------------------
+    */
+
+    const chapterResources = getChapterResources(
+        currentClass,
+        currentSubject,
+        chapterIndex
+    );
+
+    renderResourceGroups(chapterResources);
+
+    resourceSection.classList.add("visible");
+
+    setTimeout(()=>{
+        resourceSection.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    },80);
+
+}
+
+
+/* =========================================================
+   GET CHAPTER RESOURCES
+   ========================================================= */
+
+function getChapterResources(
+    classId,
+    subjectIndex,
+    chapterIndex
+){
+
+    /*
+       YOU CAN PUT DIFFERENT LINKS FOR EVERY CHAPTER.
+
+       The default example below gives every chapter its own
+       resource structure.
+
+       Change these URLs to your actual Google Drive/PDF links.
+    */
+
+    return [
+
+        {
+            title:"Study Material",
+            items:[
+
+                resource(
+                    "Complete Notes",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                ),
+
+                resource(
+                    "Theory PDF",
+                    "https://drive.google.com/",
+                    "PDF"
+                ),
+
+                resource(
+                    "Important Points",
+                    "https://drive.google.com/",
+                    "PDF"
+                )
+
+            ]
+        },
+
+        {
+            title:"NCERT & Questions",
+            items:[
+
+                resource(
+                    "NCERT Solutions",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                ),
+
+                resource(
+                    "NCERT Important Lines",
+                    "https://drive.google.com/",
+                    "PDF"
+                ),
+
+                resource(
+                    "Important Questions",
+                    "https://drive.google.com/",
+                    "PDF"
+                ),
+
+                resource(
+                    "Question Bank",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                )
+
+            ]
+        },
+
+        {
+            title:"PYQs & Papers",
+            items:[
+
+                resource(
+                    "Chapter-wise PYQs",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                ),
+
+                resource(
+                    "My PYQs",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                ),
+
+                resource(
+                    "Previous Question Papers",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                ),
+
+                resource(
+                    "Sample Papers",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                ),
+
+                resource(
+                    "Marking Schemes",
+                    "https://drive.google.com/",
+                    "PDF"
+                )
+
+            ]
+        },
+
+        {
+            title:"Formula & Revision",
+            items:[
+
+                resource(
+                    "Formula Sheet",
+                    "https://drive.google.com/",
+                    "PDF"
+                ),
+
+                resource(
+                    "Shortcuts",
+                    "https://drive.google.com/",
+                    "PDF"
+                ),
+
+                resource(
+                    "One-Shot Revision",
+                    "https://youtube.com/",
+                    "VIDEO"
+                ),
+
+                resource(
+                    "Quick Revision PDF",
+                    "https://drive.google.com/",
+                    "PDF"
+                )
+
+            ]
+        },
+
+        {
+            title:"Practice",
+            items:[
+
+                resource(
+                    "Practice Papers",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                ),
+
+                resource(
+                    "DPPs",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                ),
+
+                resource(
+                    "Extra Questions",
+                    "https://drive.google.com/",
+                    "PDF"
+                ),
+
+                resource(
+                    "My Papers",
+                    "https://drive.google.com/",
+                    "DRIVE"
+                )
+
+            ]
+        },
+
+        {
+            title:"Images & Diagrams",
+            items:[
+
+                resource(
+                    "Formula Images",
+                    "https://drive.google.com/",
+                    "IMAGE"
+                ),
+
+                resource(
+                    "Important Diagrams",
+                    "https://drive.google.com/",
+                    "IMAGE"
+                ),
+
+                resource(
+                    "Mind Maps",
+                    "https://drive.google.com/",
+                    "IMAGE"
+                )
+
+            ]
+        },
+
+        {
+            title:"Extra Resources",
+            items: COMMON_RESOURCES
+
+        }
+
+    ];
+
+}
+
+
+/* =========================================================
+   RENDER RESOURCE GROUPS
+   ========================================================= */
+
+function renderResourceGroups(resourceGroupsData){
+
+    resourceGroups.innerHTML = "";
+
+    resourceGroupsData.forEach(group=>{
+
+        const groupBox = document.createElement("div");
+
+        groupBox.className = "resource-group";
+
+        const title = document.createElement("h3");
+
+        title.textContent = group.title;
+
+        groupBox.appendChild(title);
+
+        const list = document.createElement("div");
+
+        list.className = "resource-list";
+
+        if(!group.items || group.items.length === 0){
+
+            list.innerHTML = `
+                <div class="empty">
+                    No resources added yet.
+                </div>
+            `;
+
+        }else{
+
+            group.items.forEach(item=>{
+
+                const link = document.createElement("a");
+
+                link.className = "resource-link";
+
+                link.href = item.url;
+
+                link.target = "_blank";
+
+                link.rel = "noopener noreferrer";
+
+                link.innerHTML = `
+                    <span class="resource-name">
+                        ${escapeHTML(item.name)}
+                    </span>
+
+                    <span class="resource-type">
+                        ${escapeHTML(item.type)}
+                    </span>
+                `;
+
+                list.appendChild(link);
+
+            });
+
+        }
+
+        groupBox.appendChild(list);
+
+        resourceGroups.appendChild(groupBox);
+
+    });
+
+}
+
+
+/* =========================================================
+   BACK TO SUBJECTS
+   ========================================================= */
+
+function backToSubjects(){
+
+    if(currentClass === null){
+        return;
+    }
+
+    openClass(currentClass);
+
+}
+
+
+/* =========================================================
+   BACK TO CHAPTERS
+   ========================================================= */
+
+function backToChapters(){
+
+    if(currentClass === null || currentSubject === null){
+        return;
+    }
+
+    openSubject(currentSubject);
+
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+document.getElementById("searchForm").addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+        const query =
+            searchInput.value.trim().toLowerCase();
+
+        if(!query){
+            searchInput.focus();
+            return;
+        }
+
+        performSearch(query);
+
+    }
+);
+
+
+/* =========================================================
+   PERFORM SEARCH
+   ========================================================= */
+
+function performSearch(query){
+
+    const results = [];
+
+    Object.entries(BOARD_DATA).forEach(
+        ([classId,classData])=>{
+
+            classData.subjects.forEach(
+                (subject,subjectIndex)=>{
+
+                    /* Search subject name/code */
+
+                    if(
+                        subject.name.toLowerCase().includes(query) ||
+                        subject.code.toLowerCase().includes(query)
+                    ){
+
+                        results.push({
+                            title:subject.name,
+                            description:
+                                `${classData.name} • Code ${subject.code}`,
+                            classId:classId,
+                            subjectIndex:subjectIndex
+                        });
+
+                    }
+
+
+                    /* Search chapters */
+
+                    subject.chapters.forEach(
+                        (chapter,chapterIndex)=>{
+
+                            if(
+                                chapter.toLowerCase().includes(query)
+                            ){
+
+                                results.push({
+                                    title:chapter,
+                                    description:
+                                        `${classData.name} • ${subject.name}`,
+                                    classId:classId,
+                                    subjectIndex:subjectIndex,
+                                    chapterIndex:chapterIndex
+                                });
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    hideAllSections();
+
+    searchResults.classList.add("visible");
+
+    searchInfo.textContent =
+        `${results.length} result${results.length===1?"":"s"} found for "${query}"`;
+
+    resultGrid.innerHTML = "";
+
+
+    if(results.length === 0){
+
+        resultGrid.innerHTML = `
+            <div class="empty">
+                No matching subject or chapter found.
+                Try another word.
+            </div>
+        `;
+
+    }else{
+
+        results.forEach(result=>{
+
+            const card =
+                document.createElement("div");
+
+            card.className = "result-card";
+
+            const hasChapter =
+                result.chapterIndex !== undefined;
+
+            card.innerHTML = `
+                <h3>
+                    ${escapeHTML(result.title)}
+                </h3>
+
+                <p>
+                    ${escapeHTML(result.description)}
+                </p>
+
+                <a href="#" class="result-open">
+                    ${hasChapter ? "Open Chapter →" : "Open Subject →"}
+                </a>
+            `;
+
+            card
+                .querySelector(".result-open")
+                .addEventListener("click",function(event){
+
+                    event.preventDefault();
+
+                    currentClass = result.classId;
+                    currentSubject = result.subjectIndex;
+
+                    if(hasChapter){
+
+                        openChapter(result.chapterIndex);
+
+                    }else{
+
+                        openSubject(result.subjectIndex);
+
+                    }
+
+                });
+
+            resultGrid.appendChild(card);
+
+        });
+
+    }
+
+
+    /*
+       IMPORTANT:
+       Search results scroll ONLY AFTER ENTER is pressed.
+    */
+
+    setTimeout(()=>{
+
+        searchResults.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    },80);
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   INITIAL STATE
+   ========================================================= */
+
+hideAllSections();
+
+</script>
+
+</body>
+</html>
