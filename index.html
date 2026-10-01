@@ -8,6 +8,118 @@
 
 <style>
 /* =========================================================
+   THOEDGE WELCOME SCREEN
+   ========================================================= */
+
+#welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(0,170,255,0.14),
+            transparent 35%),
+        rgba(3,4,10,0.96);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+#welcome-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-content {
+    text-align: center;
+    animation: welcomeEnter 1s ease forwards;
+}
+
+.welcome-brand {
+    color: #00f0ff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 14px;
+    text-shadow: 0 0 20px rgba(0,240,255,0.7);
+}
+
+.welcome-content h1 {
+    margin: 0;
+    font-size: clamp(28px, 6vw, 55px);
+    font-weight: 800;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #00f0ff,
+        #8b5cf6,
+        #ff3cac
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.welcome-content p {
+    margin-top: 14px;
+    color: #9292a7;
+    font-size: 14px;
+}
+
+.welcome-line {
+    width: 0;
+    height: 2px;
+    margin: 24px auto 0;
+
+    background: linear-gradient(
+        90deg,
+        #00f0ff,
+        #8b5cf6,
+        #ff3cac
+    );
+
+    box-shadow: 0 0 15px rgba(0,240,255,0.6);
+
+    animation: welcomeLine 3.9s ease forwards;
+}
+
+@keyframes welcomeEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes welcomeLine {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 180px;
+    }
+}
+/* =========================================================
    TBH - THOYAJAKSH'S BOARD'S HUB
    SINGLE FILE VERSION
    Put logo.png beside this index.html
@@ -742,6 +854,14 @@ button{
 </head>
 
 <body>
+<div id="welcome-screen">
+    <div class="welcome-content">
+        <div class="welcome-brand">TBH</div>
+        <h1>Welcome to THOEDGE Creations</h1>
+        <p>One brand. Many useful digital hubs.</p>
+        <div class="welcome-line"></div>
+    </div>
+</div>
 
 <!-- =======================================================
      HEADER
@@ -2163,6 +2283,28 @@ function escapeHTML(value){
    ========================================================= */
 
 hideAllSections();
+/* =========================================================
+   THOEDGE WELCOME SCREEN — AUTOMATIC
+   ========================================================= */
+
+window.addEventListener("load", function () {
+
+    const welcomeScreen =
+        document.getElementById("welcome-screen");
+
+    if (!welcomeScreen) return;
+
+    setTimeout(function () {
+
+        welcomeScreen.classList.add("hide");
+
+        setTimeout(function () {
+            welcomeScreen.remove();
+        }, 700);
+
+    }, 2200);
+
+});
 
 </script>
 
