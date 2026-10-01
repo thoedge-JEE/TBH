@@ -7,9 +7,8 @@
 <title>TBH - Thoyajaksh's Board's Hub</title>
 
 <style>
-/* =========================================================
-   THOEDGE PREMIUM WELCOME SCREEN
-   Transparent Logo + Glow + Smooth Animation
+   /* =========================================================
+   THOEDGE WELCOME SCREEN
    ========================================================= */
 
 #welcome-screen {
@@ -21,193 +20,22 @@
     align-items: center;
     justify-content: center;
 
-    overflow: hidden;
-
     background:
-        radial-gradient(
-            circle at center,
-            rgba(54,230,255,0.16),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(166,108,255,0.10),
-            transparent 55%
-        ),
-        rgba(4,6,15,0.97);
+        radial-gradient(circle at center,
+            rgba(0,170,255,0.14),
+            transparent 35%),
+        rgba(3,4,10,0.96);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     opacity: 1;
     visibility: visible;
 
     transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
+        opacity 0.7s ease,
+        visibility 0.7s ease;
 }
-
-
-/* =========================================================
-   FADED BACKGROUND LOGO
-   ========================================================= */
-
-.welcome-logo {
-    position: absolute;
-
-    width: min(72vw, 430px);
-    height: min(72vw, 430px);
-
-    object-fit: contain;
-
-    opacity: 0.10;
-
-    filter:
-        drop-shadow(0 0 25px rgba(54,230,255,0.55))
-        drop-shadow(0 0 70px rgba(166,108,255,0.30));
-
-    animation:
-        logoFloat 2.8s ease-in-out infinite,
-        logoAppear 1.2s ease forwards;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   DARK GLASS LAYER OVER LOGO
-   ========================================================= */
-
-#welcome-screen::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at center,
-            transparent 0%,
-            rgba(4,6,15,0.15) 45%,
-            rgba(4,6,15,0.55) 100%
-        );
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   FRONT TEXT
-   ========================================================= */
-
-.welcome-content {
-    position: relative;
-    z-index: 2;
-
-    text-align: center;
-
-    padding: 24px;
-
-    animation:
-        welcomeEnter 1s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-
-/* Small THOEDGE brand text */
-
-.welcome-brand {
-    color: #36e6ff;
-
-    font-size: 12px;
-    font-weight: 800;
-
-    letter-spacing: 6px;
-
-    margin-bottom: 16px;
-
-    text-transform: uppercase;
-
-    text-shadow:
-        0 0 10px rgba(54,230,255,0.8),
-        0 0 25px rgba(54,230,255,0.45);
-}
-
-
-/* Main welcome heading */
-
-.welcome-content h1 {
-    margin: 0;
-
-    font-size: clamp(30px, 7vw, 58px);
-
-    line-height: 1.08;
-
-    font-weight: 850;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff 0%,
-            #36e6ff 35%,
-            #a66cff 70%,
-            #ff5db1 100%
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-
-    text-shadow:
-        0 0 35px rgba(54,230,255,0.15);
-}
-
-
-/* Subtitle */
-
-.welcome-content p {
-    margin-top: 16px;
-
-    color: rgba(245,247,255,0.68);
-
-    font-size: clamp(13px, 3vw, 16px);
-
-    letter-spacing: 0.5px;
-}
-
-
-/* =========================================================
-   GLOWING LINE
-   ========================================================= */
-
-.welcome-line {
-    width: 0;
-    height: 2px;
-
-    margin: 25px auto 0;
-
-    border-radius: 50px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #36e6ff,
-            #a66cff,
-            #ff5db1
-        );
-
-    box-shadow:
-        0 0 8px rgba(54,230,255,0.8),
-        0 0 25px rgba(166,108,255,0.55);
-
-    animation:
-        welcomeLine 1.8s 0.35s ease forwards;
-}
-
-
-/* =========================================================
-   EXIT ANIMATION
-   ========================================================= */
 
 #welcome-screen.hide {
     opacity: 0;
@@ -215,115 +43,83 @@
     pointer-events: none;
 }
 
-
-/* =========================================================
-   TEXT ENTER ANIMATION
-   ========================================================= */
-
-@keyframes welcomeEnter {
-
-    0% {
-        opacity: 0;
-        transform:
-            translateY(18px)
-            scale(0.94);
-        filter: blur(8px);
-    }
-
-    60% {
-        opacity: 1;
-        filter: blur(0);
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-        filter: blur(0);
-    }
+.welcome-content {
+    text-align: center;
+    animation: welcomeEnter 1s ease forwards;
 }
 
+.welcome-brand {
+    color: #00f0ff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 14px;
+    text-shadow: 0 0 20px rgba(0,240,255,0.7);
+}
 
-/* =========================================================
-   LOGO APPEAR
-   ========================================================= */
+.welcome-content h1 {
+    margin: 0;
+    font-size: clamp(28px, 6vw, 55px);
+    font-weight: 800;
 
-@keyframes logoAppear {
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #00f0ff,
+        #8b5cf6,
+        #ff3cac
+    );
 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.welcome-content p {
+    margin-top: 14px;
+    color: #9292a7;
+    font-size: 14px;
+}
+
+.welcome-line {
+    width: 0;
+    height: 2px;
+    margin: 24px auto 0;
+
+    background: linear-gradient(
+        90deg,
+        #00f0ff,
+        #8b5cf6,
+        #ff3cac
+    );
+
+    box-shadow: 0 0 15px rgba(0,240,255,0.6);
+
+    animation: welcomeLine 1.6s ease forwards;
+}
+
+@keyframes welcomeEnter {
     from {
         opacity: 0;
-        transform: scale(0.78);
+        transform: scale(0.94);
     }
 
     to {
-        opacity: 0.10;
+        opacity: 1;
         transform: scale(1);
     }
 }
 
-
-/* =========================================================
-   SLOW LOGO FLOAT
-   ========================================================= */
-
-@keyframes logoFloat {
-
-    0%,
-    100% {
-        transform: scale(1) translateY(0);
-    }
-
-    50% {
-        transform: scale(1.06) translateY(-8px);
-    }
-}
-
-
-/* =========================================================
-   LINE ANIMATION
-   ========================================================= */
-
 @keyframes welcomeLine {
-
     from {
         width: 0;
-        opacity: 0;
     }
 
     to {
-        width: 190px;
-        opacity: 1;
+        width: 180px;
     }
 }
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    .welcome-logo {
-        width: 78vw;
-        height: 78vw;
-        opacity: 0.09;
-    }
-
-    .welcome-brand {
-        font-size: 10px;
-        letter-spacing: 4px;
-    }
-
-    .welcome-content h1 {
-        font-size: clamp(28px, 8vw, 42px);
-    }
-
-    .welcome-content p {
-        font-size: 13px;
-    }
-}
-/* =========================================================
+/* =============================================
    TBH - THOYAJAKSH'S BOARD'S HUB
    SINGLE FILE VERSION
    Put logo.png beside this index.html
